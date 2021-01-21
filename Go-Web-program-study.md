@@ -37,3 +37,9 @@ Template模板中，ParseFiles函数对模板文件进行语法分析，Must函�
 创建数据库表的setup.sql文件，要用psql工具。 代表数据库连接池的sql.DB。
 
 建立一个或多个数据结构（模型）来间接访问数据库
+
+## Go工具处理请求
+
+Request结构主要由以下部分组成：
+
+URL字段；Header字段；Body字段；Form字段、PostForm字段、MultipartForm字段
