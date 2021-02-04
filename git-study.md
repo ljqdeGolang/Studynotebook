@@ -68,5 +68,4 @@ git diff HEAD -- filename:比较工作区和版本库的最新版本
 
 ·    命令`git push origin :refs/tags/<tagname>`可以删除一个远程标签。
 
-
-
+​              git push --set-upstream origin <branchname> 在远程建立一个新的分支并推送上去。
