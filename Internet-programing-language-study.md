@@ -14,7 +14,7 @@ TCP/IP协议传输的四层：应用层，传输层，Internet（网络），物
 
 无连接、媒体独立、无状态
 
-![cgiarch](https://www.runoob.com/wp-content/uploads/2013/11/cgiarch.gif)
+
 
 ## TCP/IP协议
 

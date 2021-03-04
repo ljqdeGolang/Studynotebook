@@ -6,6 +6,7 @@
 解：
 
 ```go
+//方法未通过，因为超时，但是方法还是正确的
 func minKBitFlips(A []int, K int) int {
     if len(A)>30000 {
         fmt.Println("the length of the array called A is beyond the limit value.")
@@ -61,6 +62,7 @@ func minKBitFlips(A []int, K int) int {
 解：
 
 ```go
+//滑动窗口算法的应用，所以需要我后期对算法有一定的了解
 func maxSatisfied(customers []int, grumpy []int, X int) int {
 	length :=len(customers)
     var total,increase int
@@ -100,7 +102,7 @@ func maxSatisfied(customers []int, grumpy []int, X int) int {
 解：
 
 ```go
-//方法1：
+//方法1（本人想出来的）
 func flipAndInvertImage(A [][]int) [][]int {
   n :=len(A)
     for i :=range A {
@@ -119,7 +121,7 @@ func flipAndInvertImage(A [][]int) [][]int {
     }
     return A
 }
-//方法2：
+//方法2（大佬相出来的）
 func flipAndInvertImage(A [][]int) [][]int {
     n:=len(A)
     half :=(len(A)+1)/2
@@ -131,4 +133,54 @@ func flipAndInvertImage(A [][]int) [][]int {
     return A
 }
 ```
+
+**2.24**给你一个二维整数数组 `matrix`， 返回 `matrix` 的 **转置矩阵** 。
+
+矩阵的 **转置** 是指将矩阵的主对角线翻转，交换矩阵的行索引与列索引。
+
+![img](https://assets.leetcode.com/uploads/2021/02/10/hint_transpose.png)
+
+ 解：
+
+```go
+ func transpose(matrix [][]int) [][]int {
+    m :=len(matrix)
+    n :=len(matrix[0])
+    b :=make([][]int, n)
+    if m==n {
+        for i:=range matrix {
+            for j:=n-1;j>i;j-- {
+                matrix[i][j],matrix[j][i] = matrix[j][i],matrix[i][j]
+            }
+        } 
+        return matrix
+    } else {
+        for j:=0;j<n;j++ {
+            for i :=range matrix {
+                b[j] =append(b[j],matrix[i][j])
+            }
+        }
+        return b   
+    }
+}
+方法2（官方的直接将行列互换就行了）
+func transpose(matrix [][]int) [][]int {
+    n, m := len(matrix), len(matrix[0])
+    t := make([][]int, m)
+    for i := range t {
+        t[i] = make([]int, n)
+        for j := range t[i] {
+            t[i][j] = -1
+        }
+    }
+    for i, row := range matrix {
+        for j, v := range row {
+            t[j][i] = v
+        }
+    }
+    return t
+}
+```
+
+2.25~3.2只有2.27没有做，其他的都做了但未写在这上面
 
