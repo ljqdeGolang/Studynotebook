@@ -1,4 +1,4 @@
-# &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;数据库学习笔记
+#  					数据库学习笔记
 
 表的每一行称为记录（Record），记录是一个逻辑意义上的数据。
 
