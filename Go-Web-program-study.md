@@ -1,6 +1,8 @@
 #                                         Go Web 编程
 
-## chapter 1 Go与web应用
+## Go与web应用
+
+### chapter 1 Go与web应用
 
 #### HTTP与HTML简述
 
@@ -24,7 +26,7 @@ web应用的组成部分：处理器、模板引擎
 
 Go语言要求可执行程序必须位于main包中，web应用也不例外。
 
-## Chapter 2 Chitchat 论坛
+### Chapter 2 Chitchat 论坛
 
 #### 应用设计
 
@@ -54,11 +56,27 @@ Template模板中，ParseFiles函数对模板文件进行语法分析，Must函�
 
 #### 起动服务器
 
+## Web应用的基本组成部分
 
+### Chapter03接受请求
 
-## Go工具处理请求
+#### 使用Go构建服务器 
+
+Go的net/http既有服务器功能又有客户端功能。
 
 Request结构主要由以下部分组成：
 
 URL字段；Header字段；Body字段；Form字段、PostForm字段、MultipartForm字段
+
+#### 处理器和处理器函数
+
+DefaultServeMux是一个特殊的处理器，它唯一要做的就是根据请求的URL将请求重定向到不同的处理器。
+
+一个处理器就是一个拥有ServeHTTP方法的接口，拥有以下签名：`ServeHTTP(http.ResponseWriter, *http.Request)`，用http.Handle来将处理器绑定至URL的具体方法。
+
+处理器函数与上面的ServeHTTP方法一样拥有相同的签名，用http.HandleFunc来转换以及绑定，实际上处理器函数就是创建处理器的一种便利方法。
+
+日志记录、安全检查和错误处理这样的操作通常被称为横切关注点。
+
+
 
