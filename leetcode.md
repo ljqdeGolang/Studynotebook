@@ -121,7 +121,7 @@ func flipAndInvertImage(A [][]int) [][]int {
     }
     return A
 }
-//方法2（大佬相出来的）
+//方法2（大佬想出来的）
 func flipAndInvertImage(A [][]int) [][]int {
     n:=len(A)
     half :=(len(A)+1)/2
@@ -182,5 +182,5 @@ func transpose(matrix [][]int) [][]int {
 }
 ```
 
-2.25~3.2只有2.27没有做，其他的都做了但忘记写在这上面。
+
 
