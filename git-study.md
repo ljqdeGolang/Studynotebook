@@ -14,33 +14,21 @@ git diff HEAD -- filename:比较工作区和版本库的最新版本
 
 关联后，使用命令`git push -u origin master`第一次推送master分支的所有内容；
 
-此后，每次本地提交后，只要有必要，就可以使用命令`git push origin master`推送最新修改；
+从远程克隆一个仓库，使用命令`git clone git@github.com:path/repo_name.git`(这是ssh协议的)，也可以用`http`协议的命令`git clone https://github.com/ljqdeGolang/learngit.git`，这两个中的`.git`也可以不用。
 
- 
+此后，每次本地提交后，只要有必要，就可以使用命令`git push origin master`推送最新修改；
 
  查看分支：git branch
 
- 
-
 创建分支：git branch <name>
-
- 
 
 切换分支：git checkout <name>或者git switch <name>
 
- 
-
 创建+切换分支：git checkout -b <name>或者git switch -c <name>
-
- 
 
 合并某分支到当前分支：git merge <name>
 
- 
-
 删除分支：git branch -d <name>
-
- 
 
 ·    查看远程库信息，使用`git remote -v`；
 
@@ -51,6 +39,8 @@ git diff HEAD -- filename:比较工作区和版本库的最新版本
 ·    在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
 
 ·    建立本地分支和远程分支的关联，使用`git branch --set-upstream branch-name origin/branch-name`；
+
+·   命令 `git push --set-upstream origin <branchname>` 在远程建立一个新的分支并推送上去。
 
 ·    从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
 
@@ -68,4 +58,3 @@ git diff HEAD -- filename:比较工作区和版本库的最新版本
 
 ·    命令`git push origin :refs/tags/<tagname>`可以删除一个远程标签。
 
-·   命令 `git push --set-upstream origin <branchname>` 在远程建立一个新的分支并推送上去。
