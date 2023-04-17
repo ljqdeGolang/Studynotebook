@@ -2,9 +2,7 @@
 
 官方文档解释：`gRPC` is a modern, open source, high-performance remote procedure call (`RPC`) framework that can run anywhere. `gRPC` enables client and server applications to communicate transparently, and simplifies the building of connected systems.
 
-![Concept Diagram](D:\git-library\Studynotebook\figure\landing-2.svg)
-
-
+![landing-2](figure/landing-2.svg)
 
 - 学习官方文档笔记：
 
