@@ -15,9 +15,13 @@ HTML 是用来描述网页的一种语言。
 
 ![img](figure/02A7DD95-22B4-4FB9-B994-DDB5393F7F03.jpg)
 
-#### head头部
+### head头部
 
-元数据`<meta>`元素，指定文档的字符编码，添加作者及描述(name,content)，其他类型的元数据（许多公司的专有创作元数据协议，property,content）
+元数据`<meta>`元素（页面基本信息），指定文档的字符编码，添加作者及描述(name,content)，其他类型的元数据（许多公司的专有创作元数据协议，property,content）
+
+![image-20230517133743142](figure/image-20230517133743142.png)
+
+![image-20230517133911454](figure/image-20230517133911454.png)
 
 `<link>`元素，rel指定文档样式，href包含了路径。
 
@@ -365,75 +369,79 @@ HTML 表单用于收集用户的输入信息。也可以称网页中的交互区
 
 HTML 表单表示文档中的一个区域，此区域包含交互控件，将用户收集到的信息发送到 Web 服务器。
 
-标签`<form>input元素</form>`
+标签`<form>input元素</form>`，重要的属性：`action`（表单提交地址）、`target`、`method`（提交方式）
 
-重要的属性：`action`、`name`、`method`
+输入元素(type属性)：文本域（text）、密码字段(password)、单选按钮(radio)、复选框(checkbox)、提交按钮(submmit)、隐藏域(hiden)、重置按钮(reset)
 
-输入元素：文本域、密码字段、单选按钮、复选框、提交按钮
-
-表单中的单选按钮可以设置以下几个属性：value、name、checked
+表单中的单选、复选按钮等基本要设置以下几个属性：value、name、checked
 
 -  value：提交数据到服务器的值（后台程序PHP使用）
 -  name：为控件命名，以备后台程序 ASP、PHP 使用
 -  checked：当设置 checked="checked" 时，该选项被默认选中
 
-| 标签       | 描述                                         |
-| :--------- | :------------------------------------------- |
-| <form>     | 定义供用户输入的表单                         |
-| <input>    | 定义输入域                                   |
-| <textarea> | 定义文本域 (一个多行的输入控件)              |
-| <label>    | 定义了 <input> 元素的标签，一般为输入标题    |
-| <fieldset> | 定义了一组相关的表单元素，并使用外框包含起来 |
-| <legend>   | 定义了 <fieldset> 元素的标题                 |
-| <select>   | 定义了下拉选项列表                           |
-| <optgroup> | 定义选项组                                   |
-| <option>   | 定义下拉列表中的选项                         |
-| <button>   | 定义一个点击按钮                             |
-| <datalist> | 指定一个预先定义的输入控件选项列表           |
-| <keygen>   | 定义了表单的密钥对生成器字段                 |
-| <output>   | 定义一个计算结果                             |
+按钮（button）属性type(submit提交，reset重置，button普通按钮)
+
+| 标签       | 描述                                                         |
+| :--------- | :----------------------------------------------------------- |
+| <form>     | 定义供用户输入的表单                                         |
+| <input>    | 定义输入域，属性type、name、value、maxlength、disabled(禁用) |
+| <textarea> | 定义文本域 (一个多行的输入控件)，cols、rows                  |
+| <label>    | label 标签可与input元素表单控件相关联，关联之后点击文字，与之对应的表单控件就会获取焦点。<br/>两种与 label 关联方式如下：<br/>1. 让 label 标签的 for 属性的值等于表单控件的 id 。<br/>2. 把表单控件套在 label 标签的里面。 |
+| <fieldset> | 定义了一组相关的表单元素，并使用外框包含起来                 |
+| <legend>   | 定义了 <fieldset> 元素的标题                                 |
+| <select>   | 定义了下拉选项列表                                           |
+| <optgroup> | 定义选项组                                                   |
+| <option>   | 定义下拉列表中的选项，属性value、selceted                    |
+| <button>   | 定义一个点击按钮                                             |
+| <datalist> | 指定一个预先定义的输入控件选项列表                           |
+| <keygen>   | 定义了表单的密钥对生成器字段                                 |
+| <output>   | 定义一个计算结果                                             |
+
+![image-20230517133615373](figure/image-20230517133615373.png)
 
 ####   框架
 
-通过使用框架，你可以在同一个浏览器窗口中显示不止一个页面。
+通过使用框架，你可以在同一个浏览器窗口中嵌入一个页面，也可嵌入图片。
 
-`<iframe src='url'></iframe>`，用height、width来定义iframe标签的高度与宽度
+`<iframe src='url'></iframe>`，用height、width来定义iframe标签的高度与宽度，frameborder定义边框宽度，name框架名字与target属性配合使用。
 
-使用 iframe 来显示目标链接页面，`<iframe src="demo_iframe.htm" name="iframe_a"></iframe> <p><a href="https://www.runoob.com" target="iframe_a" rel="noopener">RUNOOB.COM</a></p>`
+使用 iframe 来显示目标链接页面，`<iframe src="demo_iframe.htm" name="iframe_a"></iframe>`
+
+` <p><a href="https://www.runoob.com" target="iframe_a" rel="noopener">RUNOOB.COM</a></p>`
 
 ####   脚本
 
 JavaScript 使 HTML 页面具有更强的动态和交互性。
 
-<script> 标签用于定义客户端脚本，比如 JavaScript。
+`<script> 标签用于定义客户端脚本，比如 JavaScript。`
 
+`<script> 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。`
 
-<script> 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。
 
 JavaScript 最常用于图片操作、表单验证以及内容动态更新。
 
 ####   字符实体
 
-&*entity_name*;或&#*entity_number*;替换预留字符或键盘上没有的字符.
+&*entity_name*;或&#*entity_number*;   替换预留字符或键盘上没有的字符.
 
-| 显示结果 | 描述        | 实体名称          | 实体编号  |
-| :------- | :---------- | :---------------- | :-------- |
-|          | 空格        | &nbsp;            | `&#160;`  |
-| <        | 小于号      | &lt;              | `&#60;`   |
-| >        | 大于号      | &gt;              | `&#62;`   |
-| &        | 和号        | &amp;             | `&#38;`   |
-| "        | 引号        | &quot;            | `&#34;`   |
-| '        | 撇号        | &apos; (IE不支持) | `&#39;`   |
-| ￠       | 分          | &cent;            | `&#162;`  |
-| £        | 镑          | &pound;           | `&#163;`  |
-| ¥        | 人民币/日元 | &yen;             | `&#165;`  |
-| €        | 欧元        | &euro;            | `&#8364;` |
-| §        | 小节        | &sect;            | `&#167;`  |
-| ©        | 版权        | &copy;            | `&#169;`  |
-| ®        | 注册商标    | &reg;             | `&#174;`  |
-| ™        | 商标        | &trade;           | `&#8482;` |
-| ×        | 乘号        | &times;           | `&#215;`  |
-| ÷        | 除号        | &divide;          | `&#247;`  |
+| 显示结果 | 描述        | 实体名称            | 实体编号  |
+| :------- | :---------- | :------------------ | :-------- |
+|          | 空格        | `&nbsp;`            | `&#160;`  |
+| <        | 小于号      | `&lt;`              | `&#60;`   |
+| >        | 大于号      | `&gt;`              | `&#62;`   |
+| &        | 和号        | `&amp;`             | `&#38;`   |
+| "        | 引号        | `&quot;`            | `&#34;`   |
+| '        | 撇号        | `&apos;` (IE不支持) | `&#39;`   |
+| ￠       | 分          | `&cent;`            | `&#162;`  |
+| £        | 镑          | `&pound;`           | `&#163;`  |
+| ¥        | 人民币/日元 | `&yen;`             | `&#165;`  |
+| €        | 欧元        | `&euro;`            | `&#8364;` |
+| §        | 小节        | `&sect;`            | `&#167;`  |
+| ©        | 版权        | `&copy;`            | `&#169;`  |
+| ®        | 注册商标    | `&reg;`             | `&#174;`  |
+| ™        | 商标        | `&trade;`           | `&#8482;` |
+| ×        | 乘号        | `&times;`           | `&#215;`  |
+| ÷        | 除号        | `&divide;`          | `&#247;`  |
 
 #### URL
 
@@ -442,6 +450,19 @@ JavaScript 最常用于图片操作、表单验证以及内容动态更新。
 一个统一资源定位器(URL) 用于定位万维网上的文档。
 
 语法规则：scheme://host.domain:port/path/filename
+
+#### 全局属性
+
+什么标签都能写的属性就叫全局属性
+
+| 属性名 | 含义                       |
+| ------ | -------------------------- |
+| id     | 给标签的唯一标识，不能重复 |
+| class  | 类选择器                   |
+| style  | 设置CSS样式                |
+| dir    | 内容的方向，值：ltr、rtl   |
+| tiltle | 给标签设置文字属性         |
+| lang   | 给标签指定语言             |
 
 ### 补充知识点
 
@@ -487,3 +508,5 @@ b、图片 ***.jpg** 在 **image** 文件夹中，***.html** 在 **connage** 文
 ```
 
 7、内容中的单词之间的空格用%20代替
+
+### HTML5

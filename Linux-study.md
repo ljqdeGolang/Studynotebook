@@ -4,13 +4,13 @@
 
 - #### **Linux系统启动过程**：
 
-![image0](D:\git-library\Studynotebook\figure\bg2013081707.png)
+![bg2013081707](figure/bg2013081707.png)
 
 - #### **Linux系统目录结构**：
 
 在 Linux 或 Unix 操作系统中，所有的文件和目录都被组织成以一个根节点开始的倒置的树状结构。
 
-![image1](D:\git-library\Studynotebook\figure\d0c50-linux2bfile2bsystem2bhierarchy.jpg)
+![d0c50-linux2bfile2bsystem2bhierarchy](figure/d0c50-linux2bfile2bsystem2bhierarchy.jpg)
 
 `ls /`这是查看系统所有文件的命令，以下是那些系统文件
 

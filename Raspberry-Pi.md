@@ -8,7 +8,7 @@
 
 `GPU`：图形处理单元，管理图形的硬件，等同于一般计算机的显卡。
 
-![rpi-pins-40-0](D:\git-library\Studynotebook\figure\rpi-pins-40-0.png)
+![rpi-pins-40-0](figure/rpi-pins-40-0.png)
 
 在烧录系统后，在没有显示器的情况下，如何获得树莓派的ip地址？
 
