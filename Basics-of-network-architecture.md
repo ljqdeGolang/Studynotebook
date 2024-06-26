@@ -523,7 +523,7 @@ HTTP-message = start-line
 
 start-line：request-line、status-line
 
-request-line = method SP request-target SP HTTP-version CRLF
+request-line = method SP request-target SP（空格的意思） HTTP-version CRLF（回车换行的意思）
 
  HTTP-version = HTTP-name "/" DIGIT "." DIGIT 
 
