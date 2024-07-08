@@ -8,7 +8,7 @@
 
 - 采用组件化模式，提高代码复用率，让代码更好维护。
 - 声明式编码，让编码人员无需直接操作DOM
-- 使用虚拟DOM和Diff算法，尽量复用DOM节点
+- 使用虚拟DOM和Diff算法，尽量复用DOM节点 
 
  ES6语法规范、ES6模块化、包管理器、原型、原型链、数组常用方法、axios、promise
 
@@ -939,7 +939,9 @@ public文件下的index.html是容器文件，内容如下：
 2.应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象(vc)
 
 3.使用方式:
-打标识: <h1 ref="xxx">.....</h1> 或 <School ref="xxx"x/School>获取: this.$refs.xxx
+打标识: <h1 ref="xxx">.....</h1> 或 <School ref="xxx"></School>
+
+获取: this.$refs.xxx
 
 #### props属性
 
@@ -992,7 +994,7 @@ props:{
 
 #### Vue插件 
 
-功能:用于增强Vue一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数本质:包含instal1方法的据。
+功能:用于增强Vue一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据 本质:包含install方法。
 定义插件:
 
 ```vue

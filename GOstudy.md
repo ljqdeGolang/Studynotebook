@@ -16,15 +16,11 @@ python解决了机器学习的问题，区块链解决了机器与机器之间�
 
 switch不能用浮点类型。
 
-
-
 如果函数的参数为不定参`func add(a ...int)`，传递参数方式a[0:]...   用len获得不定参的长度。
 
 函数可以返回多个返回值，函数名本身就是一个指针类型数据，在内存中代码区进行储存。函数中的的信息在栈区储存，用完就销毁。
 
 函数类型`  type  name  func(int,int) int `  其实就是一个指针类型。
-
-
 
 匿名内部函数：不能调用只能内部使用。
 
@@ -36,7 +32,7 @@ switch不能用浮点类型。
 
 工程管理：`src`：源码文件夹  `pkg`: “.a”的归档文件。`bin`：`go install`安装形成的可执行文件
 
-数组：指定数组下标进行初始化值，var array [10]int{6:10}，第七个元素为10。
+
 
 随机数：导入头文件：math/rand time；添加随机数种子；使用随机数
 
@@ -104,12 +100,6 @@ for {
 }
 ```
 
-strings包：`contains`判断是否包含某个字符串；`Join`讲一个字符串切片拼接成一个字符串；`index`查找另一个字符是否存在，返回下标；`Repeat`将一个字符串重复N次；`Replace`替换字符；`Spilt`切分字符串；`Trim`去掉字符串前后指定内容；`Fields`去掉字符串中的空格，并返回有效数据切片；
-
-`strconv`包：字符串类型转换：有`FormatBool`、`FormatInt`、`Itoa`、`FormatFloat(数据，'f',保留小数位置;位数)`、`PraseBool`、`Atoi`
-
-将数据转换为字符添加给字符串：`AppendBool、AppendInt`  
-
 **`GTK`窗口程序开发：**
 
 第一梯队：`MFC(opengl等)、C#、QT`  第二梯队：`GTK、GUI`
@@ -132,71 +122,6 @@ strings包：`contains`判断是否包含某个字符串；`Join`讲一个字符
 传值（数据据）：将实参的值拷贝一份给形参。
 
 传引用：	在A栈帧内部，修改B栈帧中的变量值。
-
-**切片**：不是一个数组的指针，是一种数据结构体，用来操作数组内部元素。
-
-```go
-  切片名称 [ low : high : max ]
-low: 起始下标位置
-  high：结束下标位置	len = high - low
-容量：cap = max - low
-  截取数组，初始化切片时，没有指定切片容量时,切片容量跟随原数组（切片）。
-	s[:high:max] :从0开始，到high结束（不包含）.
-  	s[low:] :从low开始，到末尾
-	s[: high]:从0开始，到high结束。容量跟随原先容量。【常用】
-  切片做函数参数 —— 传引用。（传地址）
-  append：在切片末尾追加元素
-  	append(切片对象， 待追加元素）
-  	向切片增加元素时，切片的容量会自动增长。1024 以下时，一两倍方式增长。
-  copy：
-  	copy（目标位置切片， 源切片） 拷贝过程中，直接对应位置拷贝。
-```
-  **map**： 
-
-  ```go
-  key： 唯一、无序。 不能是引用类型数据。
-  map 不能使用 cap（）
-  创建方式：
-  	1.  var m1 map[int]string		--- 不能存储数据（只声明map，没有空间，不能直接存储key--value。）
-  
-  	2. m2 := map[int]string{}		---能存储数据
-  
-	3. m3 := make(map[int]string)		---默认len = 0
-  
-  	4. m4 := make(map[int]string, 10)
-  
-  初始化：
-  
-  	1. var m map[int]string = map[int]string{ 1: "aaa", 2:"bbb"}	保证key彼此不重复。
-  
-  	2. m := map[int]string{ 1: "aaa", 2:"bbb"}
-  
-  赋值:
-  
-  	赋值过程中，如果新map元素的key与原map元素key 相同 	——> 覆盖（替换）
-  
-  	赋值过程中，如果新map元素的key与原map元素key 不同	——> 添加
-  
-  map的使用：
-  		  
-  	遍历map：
-  
-  		for  key值， value值 := range map {
-  		} 
-  
-  		for  key值 := range map {
-  		}	
-  
-  	判断map中key是否存在。
-  
-  		 map[下标] 运算：返回两个值， 第一个表 value 的值，如果value不存在。 nil
-  		第二个表 key是否存在的bool类型。存在 true， 不存在false
-  
-  	删除map：
-  		delete()函数： 参1： 待删除元素的map	参2： key值
-  		delete（map， key）删除一个不存在的key ， 不会报错。
-  		map 做函数参数和返回值，传引用。
-  ```
 
   **线程进程**：
 
@@ -461,6 +386,12 @@ x, err := strconv.Atoi("123")             // x is an int
 y, err := strconv.ParseInt("123", 10, 64) // base 10, up to 64 bits
 ```
 
+strings包：`contains`判断是否包含某个字符串；`Join`讲一个字符串切片拼接成一个字符串；`index`查找另一个字符是否存在，返回下标；`Repeat`将一个字符串重复N次；`Replace`替换字符；`Spilt`切分字符串；`Trim`去掉字符串前后指定内容；`Fields`去掉字符串中的空格，并返回有效数据切片；
+
+`strconv`包：字符串类型转换：有`FormatBool`、`FormatInt`、`Itoa`、`FormatFloat(数据，'f',保留小数位置;位数)`、`PraseBool`、`Atoi`
+
+将数据转换为字符添加给字符串：`AppendBool、AppendInt`  
+
 #### 3.6 常量
 
 每种常量的潜在类型都是基础类型：boolean、string或数字。
@@ -490,16 +421,347 @@ fmt.Println(a, b, c, d) // "1 1 2 2"
 
 数组是一个由固定长度的特定类型元素组成的序列，一个数组可以由零个或多个元素组成。
 
+`var a [3]int 、var q [3]int = [3]int{1, 2, 3}`
+
+在数组字面值中，如果在数组的长度位置出现的是“...”省略号，则表示数组的长度是根据初始化值的个数来计算。
+
 数组的长度是数组类型的一个组成部分，因此[3]int和[4]int是两种不同的数组类型。
 
-## GO语言基础学习
+数组：指定数组下标进行初始化值，var array [10]int{6:10}，第七个元素为10。
 
-2、切片
+#### 4.2 切片
+
+Slice（切片）代表变长的序列，序列中每个元素都有相同的类型。一个slice类型一般写作[]T，其中T代表slice中元素的类型；slice的语法和数组很像，只是没有固定长度而已。
+
+因为其是对底层数组类型的引用，当用range遍历切片时，改变其值，也能改变切片的值。
+
+一个slice由三个部分构成：指针、长度和容量。指针指向第一个slice元素对应的底层数组元素的地址；长度对应slice中元素的数目；长度不能超过容量，容量一般是从slice的开始位置到底层数据的结尾位置。内置的len和cap函数分别返回slice的长度和容量。
+
+如果切片操作超出cap(s)的上限将导致一个panic异常，但是超出len(s)则是意味着扩展了slice，因为新slice的长度会变大。
+
+如果你需要测试一个slice是否是空的，使用len(s) == 0来判断，而不应该用s == nil来判断。
+
+内置的make函数创建一个指定元素类型、长度和容量的slice。容量部分可以省略，在这种情况下，容量将等于长度。
+
+```Go
+make([]T, len)
+make([]T, len, cap) // same as make([]T, cap)[:len]
+```
+
+1）append 函数
+
+内置的append函数用于向slice追加元素:
 
 ```go
 f :=[]string{"sws","gao"}
 s :=append(g, f...)  //这是成立的，将f就添加给g了
 ```
+
+要正确地使用slice，需要记住尽管底层数组的元素是间接访问的，但是slice对应结构体本身的指针、长度和容量部分是直接访问的。要更新这些信息需要像上面例子那样一个显式的赋值操作。从这个角度看，slice并不是一个纯粹的引用类型，它实际上是一个类似下面结构体的聚合类型：
+
+```Go
+type IntSlice struct {
+    ptr      *int
+    len, cap int
+}
+```
+
+相关补充：
+
+```go
+  切片名称 s[ low : high : max ]
+low: 起始下标位置
+  high：结束下标位置	len = high - low
+容量：cap = max - low
+  截取数组，初始化切片时，没有指定切片容量时,切片容量跟随原数组（切片）。
+	s[:high:max] :从0开始，到high结束（不包含）.
+  	s[low:] :从low开始，到末尾
+	s[: high]:从0开始，到high结束。容量跟随原先容量。【常用】
+  切片做函数参数 —— 传引用。（传地址）
+  append：在切片末尾追加元素
+  	append(切片对象， 待追加元素）
+  	向切片增加元素时，切片的容量会自动增长。1024 以下时，一两倍方式增长。
+  copy：
+  	copy（目标位置切片， 源切片） 拷贝过程中，直接对应位置拷贝。
+```
+
+#### 4.3 Map
+
+哈希表是一种巧妙并且实用的数据结构。它是一个无序的key/value对的集合，其中所有的key都是不同的，然后通过给定的key可以在常数时间复杂度内检索、更新或删除对应的value。
+
+在Go语言中，一个map就是一个哈希表的引用，map类型可以写为map[K]V，其中K和V分别对应key和value。
+
+内置的make函数可以创建一个map：
+
+```Go
+ages := make(map[string]int) // mapping from strings to ints
+```
+
+也可以用map字面值的语法创建map，同时还可以指定一些最初的key/value：
+
+```Go
+ages := map[string]int{
+    "alice":   31,
+    "charlie": 34,
+}
+```
+
+但是map中的元素并不是一个变量，因此我们不能对map的元素进行取址操作：
+
+```Go
+_ = &ages["bob"] // compile error: cannot take address of map element
+```
+
+Map的迭代顺序是不确定的，并且不同的哈希函数实现可能导致不同的遍历顺序。在实践中，遍历的顺序是随机的，每一次遍历的顺序都不相同
+
+相关补充：
+
+```go
+ key： 唯一、无序。 不能是引用类型数据。
+  map 不能使用 cap（）
+  创建方式：
+  	1. var m1 map[int]string		--- 不能存储数据（只声明map，没有空间，不能直接存储key--value。）
+  
+  	2. m2 := map[int]string{}		---能存储数据
+  
+	3. m3 := make(map[int]string)		---默认len = 0
+  
+  	4. m4 := make(map[int]string, 10)
+  
+  初始化：
+  
+  	1. var m map[int]string = map[int]string{ 1: "aaa", 2:"bbb"}	保证key彼此不重复。
+  
+  	2. m := map[int]string{ 1: "aaa", 2:"bbb"}
+  
+  赋值:
+  
+  	赋值过程中，如果新map元素的key与原map元素key 相同 	——> 覆盖（替换）
+  
+  	赋值过程中，如果新map元素的key与原map元素key 不同	——> 添加
+  
+  map的使用：
+  		  
+  	遍历map：
+  
+  		for  key值， value值 := range map {
+  		} 
+  
+  		for  key值 := range map {
+  		}	
+  
+  	判断map中key是否存在。
+  
+  		 map[下标] 运算：返回两个值， 第一个表 value 的值，如果value不存在。 nil
+  		第二个表 key是否存在的bool类型。存在 true， 不存在false
+  
+  	删除map：
+  		delete()函数： 参1： 待删除元素的map	参2： key值
+  		delete（map， key）删除一个不存在的key ， 不会报错。
+  		map 做函数参数和返回值，传引用。
+```
+
+#### 4.4 结构体
+
+构体是一种聚合的数据类型，是由零个或多个任意类型的值聚合成的实体。
+
+```go
+type Employee struct {
+    ID        int
+    Name      string
+    Address   string
+    DoB       time.Time
+    Position  string
+    Salary    int
+    ManagerID int
+}
+
+var dilbert Employee
+```
+
+dilbert结构体变量的成员可以通过点操作符访问，比如dilbert.Name和dilbert.DoB。因为dilbert是一个变量，它所有的成员也同样是变量，我们可以直接对每个成员赋值：
+
+```Go
+dilbert.Salary -= 5000 // demoted, for writing too few lines of code
+```
+
+或者是对成员取地址，然后通过指针访问：
+
+```Go
+position := &dilbert.Position
+*position = "Senior " + *position // promoted, for outsourcing to Elbonia
+```
+
+结构体成员的输入顺序也有重要的意义，那样的话就是定义了不同的结构体类型。
+
+如果结构体成员名字是以大写字母开头的，那么该成员就是导出的；这是Go语言导出规则决定的。一个结构体可能同时包含导出和未导出的成员。
+
+一个命名为S的结构体类型将不能再包含S类型的成员：因为一个聚合的值不能包含它自身。（该限制同样适用于数组。）但是S类型的结构体可以包含`*S`指针类型的成员，这可以让我们创建递归的数据结构，比如链表和树结构等。
+
+1) 结构体字面值
+
+结构体值也可以用结构体字面值表示，结构体字面值可以指定每个成员的值。
+
+```Go
+type Point struct{ X, Y int }
+
+p := Point{1, 2}
+```
+
+其实更常用的是第二种写法，以成员名字和相应的值来初始化，可以包含部分或全部的成员，如：
+
+```Go
+anim := gif.GIF{LoopCount: nframes}
+```
+
+两种不同形式的写法不能混合使用。而且，你不能企图在外部包中用第一种顺序赋值的技巧来偷偷地初始化结构体中未导出的成员。
+
+2）结构体比较
+
+如果结构体的全部成员都是可以比较的，那么结构体也是可以比较的，那样的话两个结构体将可以使用==或!=运算符进行比较。相等比较运算符==将比较两个结构体的每个成员，因此下面两个比较的表达式是等价的：
+
+```Go
+type Point struct{ X, Y int }
+
+p := Point{1, 2}
+q := Point{2, 1}
+fmt.Println(p.X == q.X && p.Y == q.Y) // "false"
+fmt.Println(p == q)                   // "false"
+```
+
+3） 结构体嵌入和匿名成员
+
+使用Go语言提供的不同寻常的结构体嵌入机制让一个命名的结构体包含另一个结构体类型的匿名成员，这样就可以通过简单的点运算符x.f来访问匿名成员链中嵌套的x.d.e.f成员。
+
+Go语言有一个特性让我们只声明一个成员对应的数据类型而不指名成员的名字；这类成员就叫匿名成员。匿名成员的数据类型必须是命名的类型或指向一个命名的类型的指针。
+
+```Go
+type Circle struct {
+    Point
+    Radius int
+}
+
+type Wheel struct {
+    Circle
+    Spokes int
+}
+```
+
+我们看到匿名成员特性只是对访问嵌套成员的点运算符提供了简短的语法糖。其实任何命名的类型都可以作为结构体的匿名成员。但是为什么要嵌入一个没有任何子成员类型的匿名成员类型呢？答案是匿名类型的方法集。
+
+简短的点运算符语法可以用于选择匿名成员嵌套的成员，也可以用于访问它们的方法。实际上，外层的结构体不仅仅是获得了匿名成员类型的所有成员，而且也获得了该类型导出的全部的方法。这个机制可以用于将一些有简单行为的对象组合成有复杂行为的对象。组合是Go语言中面向对象编程的核心。
+
+#### 4.5 JSON
+
+JavaScript对象表示法（JSON）是一种用于发送和接收结构化信息的标准协议。
+
+JSON是对JavaScript中各种类型的值——字符串、数字、布尔值和对象——Unicode本文编码。
+
+一个JSON数组是一个有序的值序列，写在一个方括号中并以逗号分隔；一个JSON数组可以用于编码Go语言的数组和slice。一个JSON对象是一个字符串到值的映射，写成一系列的name:value对形式，用花括号包含并以逗号分隔；JSON的对象类型可以用于编码Go语言的map类型（key类型是字符串）和结构体。
+
+```Go
+type Movie struct {
+    Title  string
+    Year   int  `json:"released"`
+    Color  bool `json:"color,omitempty"`
+    Actors []string
+}
+
+var movies = []Movie{
+    {Title: "Casablanca", Year: 1942, Color: false,
+        Actors: []string{"Humphrey Bogart", "Ingrid Bergman"}},
+    {Title: "Cool Hand Luke", Year: 1967, Color: true,
+        Actors: []string{"Paul Newman"}},
+    {Title: "Bullitt", Year: 1968, Color: true,
+        Actors: []string{"Steve McQueen", "Jacqueline Bisset"}},
+    // ...
+}
+```
+
+这样的数据结构特别适合JSON格式，并且在两者之间相互转换也很容易。将一个Go语言中类似movies的结构体slice转为JSON的过程叫编组（marshaling）。编组通过调用json.Marshal函数完成，Marshal函数返回一个编码后的字节slice，包含很长的字符串，并且没有空白缩进。
+
+只有导出的结构体成员才会被编码，这也就是我们为什么选择用大写字母开头的成员名称。
+
+编码的逆操作是解码，对应将JSON数据解码为Go语言的数据结构，Go语言中一般叫unmarshaling，通过json.Unmarshal函数完成。
+
+#### 4.6 文本与HTML模板
+
+前面的例子，只是最简单的格式化，使用Printf是完全足够的。但是有时候会需要复杂的打印格式，这时候一般需要将格式化代码分离出来以便更安全地修改。这些功能是由text/template和html/template等模板包提供的，它们提供了一个将变量值填充到一个文本或HTML格式的模板的机制。
+
+一个模板是一个字符串或一个文件，里面包含了一个或多个由双花括号包含的`{{action}}`对象。
+
+大部分的字符串只是按字面值打印，但是对于actions部分将触发其它的行为。每个actions都包含了一个用模板语言书写的表达式，一个action虽然简短但是可以输出复杂的打印值，模板语言包含通过选择结构体的成员、调用函数或方法、表达式控制流if-else语句和range循环语句，还有其它实例化模板等诸多特性。下面是一个简单的模板字符串：
+
+*gopl.io/ch4/issuesreport*
+
+```Go
+const templ = `{{.TotalCount}} issues:
+{{range .Items}}----------------------------------------
+Number: {{.Number}}
+User:   {{.User.Login}}
+Title:  {{.Title | printf "%.64s"}}
+Age:    {{.CreatedAt | daysAgo}} days
+{{end}}`
+```
+
+在一个action中，`|`操作符表示将前一个表达式的结果作为后一个函数的输入，类似于UNIX中管道的概念。
+
+注意方法调用链的顺序：template.New先创建并返回一个模板；Funcs方法将daysAgo等自定义函数注册到模板中，并返回模板；最后调用Parse函数分析模板。
+
+```Go
+report, err := template.New("report").
+    Funcs(template.FuncMap{"daysAgo": daysAgo}).
+    Parse(templ)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+一旦模板已经创建、注册了daysAgo函数、并通过分析和检测，我们就可以使用github.IssuesSearchResult作为输入源、os.Stdout作为输出源来执行模板：
+
+```Go
+var report = template.Must(template.New("issuelist").
+    Funcs(template.FuncMap{"daysAgo": daysAgo}).
+    Parse(templ))
+
+func main() {
+    result, err := github.SearchIssues(os.Args[1:])
+    if err != nil {
+        log.Fatal(err)
+    }
+    if err := report.Execute(os.Stdout, result); err != nil {
+        log.Fatal(err)
+    }
+}
+```
+
+下面的模板以HTML格式输出issue列表。
+
+```Go
+import "html/template"
+
+var issueList = template.Must(template.New("issuelist").Parse(`
+<h1>{{.TotalCount}} issues</h1>
+<table>
+<tr style='text-align: left'>
+  <th>#</th>
+  <th>State</th>
+  <th>User</th>
+  <th>Title</th>
+</tr>
+{{range .Items}}
+<tr>
+  <td><a href='{{.HTMLURL}}'>{{.Number}}</a></td>
+  <td>{{.State}}</td>
+  <td><a href='{{.User.HTMLURL}}'>{{.User.Login}}</a></td>
+  <td><a href='{{.HTMLURL}}'>{{.Title}}</a></td>
+</tr>
+{{end}}
+</table>
+`))
+```
+
+## GO语言基础学习
 
 1、通道和并发
 
@@ -520,8 +782,6 @@ type arg interface {}
 a := arg.(int) //将arg保存的底层int值传给a，如果arg接口没有Int值，会panic
 
 ```
-
-3、当用range遍历切片时，改变其值，也能改变切片的值。
 
 4、下面的条件语句中的中断命令跳出循环的情况。
 
