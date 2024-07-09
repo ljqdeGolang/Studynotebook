@@ -35,3 +35,5 @@ vscode 可安装Windi CSS Intellegence插件
 
 ### 登录页面开发
 
+pages 文件夹下新建一个 login.vue 作为登录页面。
+

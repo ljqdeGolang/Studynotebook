@@ -58,48 +58,6 @@ go通过匿名字段（即：结构体）来表现继承的思想。
 
 `recover `与`defer`要联合起来使用，`recover`返回值为接口类型，`recover`的使用一定要在错误之前调用，其原理是从panic手上夺得控制权，后面的程序就不会运行了。
 
-`os`包是文件创建的包，`\`在go语言中被认为是转义字符，所以反斜杠用`\\`,也可以用正斜杠`/`来作为文件目录。创建文件例子：
-
-```go
-//创建文件，文件不存在时，建个新的，存在时，会覆盖原内容 
-fp,err :=os.Create(
-    "D:/edgexiazai/a.txt")
-if err !=nil {
-	fmt.Println("文件创建失败")
-	return
-}
-defer fp.Close()
-//写入文件
-fp.Weitestring("mike")
-fp.Write(b []byte)
-fp.WriteAt(buf []byte,n)//指定位置插入内容
-//打开文件
-fp.Open()
-fp.OpenFile(文件名 string，打开模式 os.0_RDWR,打开权限 int)
-//获取文件字符个数
-fp.Seek()
-//读文件
-fp.Read()
-fp.ReadAt()
-r:=bufio.NewReader(fp)
-b,_:=r.ReadBytes('\n')// 创建缓冲区，在读取内容。\n位置为分隔符 //EOF 值为-1 文件结束标志
-//循环读取文件
-for {
-    n,err :=fp.Read(b)
-    if err ==io.EOF { break }
-    fmt.Print(string(b[:n]))
-}
-//第二种
-r:=bufio.NewReader(fp)
-for {
-    b,err:=r.ReaderBytes('\n')
-    fmt.Println(string(b))
-    if err ==io.EOF {
-        break
-    }
-}
-```
-
 **`GTK`窗口程序开发：**
 
 第一梯队：`MFC(opengl等)、C#、QT`  第二梯队：`GTK、GUI`
@@ -182,6 +140,48 @@ for {
 字符串中存贮了字符串结束标志"\0"、“\ \”表示只有一个斜杠，常用于文件操作。
 
 range遍历它能遍历数组、切片、字典、通道。
+
+`os`包是文件创建的包，`\`在go语言中被认为是转义字符，所以反斜杠用`\\`,也可以用正斜杠`/`来作为文件目录。创建文件例子：
+
+```go
+//创建文件，文件不存在时，建个新的，存在时，会覆盖原内容 
+fp,err :=os.Create(
+    "D:/edgexiazai/a.txt")
+if err !=nil {
+	fmt.Println("文件创建失败")
+	return
+}
+defer fp.Close()
+//写入文件
+fp.Weitestring("mike")
+fp.Write(b []byte)
+fp.WriteAt(buf []byte,n)//指定位置插入内容
+//打开文件
+fp.Open()
+fp.OpenFile(文件名 string，打开模式 os.0_RDWR,打开权限 int)
+//获取文件字符个数
+fp.Seek()
+//读文件
+fp.Read()
+fp.ReadAt()
+r:=bufio.NewReader(fp)
+b,_:=r.ReadBytes('\n')// 创建缓冲区，在读取内容。\n位置为分隔符 //EOF 值为-1 文件结束标志
+//循环读取文件
+for {
+    n,err :=fp.Read(b)
+    if err ==io.EOF { break }
+    fmt.Print(string(b[:n]))
+}
+//第二种
+r:=bufio.NewReader(fp)
+for {
+    b,err:=r.ReaderBytes('\n')
+    fmt.Println(string(b))
+    if err ==io.EOF {
+        break
+    }
+}
+```
 
 ### 2、程序结构
 
@@ -760,6 +760,85 @@ var issueList = template.Must(template.New("issuelist").Parse(`
 </table>
 `))
 ```
+
+### 5 函数
+
+#### 5.1 函数声明
+
+函数声明包括函数名、形式参数列表、返回值列表（可省略）以及函数体。
+
+```Go
+func name(parameter-list) (result-list) {
+    body
+}
+```
+
+函数的类型被称为函数的签名。如果两个函数形式参数列表和返回值列表中的变量类型一一对应，那么这两个函数被认为有相同的类型或签名。形参和返回值的变量名不影响函数签名，也不影响它们是否可以以省略参数类型的形式表示。
+
+#### 5.2 递归
+
+函数可以是递归的，这意味着函数可以直接或间接的调用自身。
+
+大部分编程语言使用固定大小的函数调用栈，常见的大小从64KB到2MB不等。固定大小栈会限制递归的深度，当你用递归处理大量数据时，需要避免栈溢出；除此之外，还会导致安全性问题。与此相反，Go语言使用可变栈，栈的大小按需增加（初始时很小）。这使得我们使用递归时不必考虑溢出和安全问题。
+
+#### 5.3 多返回值
+
+在Go中，一个函数可以返回多个值。
+
+虽然Go的垃圾回收机制会回收不被使用的内存，但是这不包括操作系统层面的资源，比如打开的文件、网络连接。因此我们必须显式的释放这些资源。
+
+当你调用接受多参数的函数时，可以将一个返回多参数的函数调用作为该函数的参数。虽然这很少出现在实际生产代码中，但这个特性在debug时很方便，我们只需要一条语句就可以输出所有的返回值。下面的代码是等价的：
+
+```Go
+log.Println(findLinks(url))
+links, err := findLinks(url)
+log.Println(links, err)
+```
+
+如果一个函数所有的返回值都有显式的变量名，那么该函数的return语句可以省略操作数。这称之为bare return。
+
+```Go
+// CountWordsAndImages does an HTTP GET request for the HTML
+// document url and returns the number of words and images in it.
+func CountWordsAndImages(url string) (words, images int, err error) {
+    resp, err := http.Get(url)
+    if err != nil {
+        return
+    }
+    doc, err := html.Parse(resp.Body)
+    resp.Body.Close()
+    if err != nil {
+        err = fmt.Errorf("parsing HTML: %s", err)
+        return
+    }
+    words, images = countWordsAndImages(doc)
+    return
+}
+func countWordsAndImages(n *html.Node) (words, images int) { /* ... */ }
+```
+
+#### 5.4 错误
+
+在Go的错误处理中，错误是软件包API和应用程序用户界面的一个重要组成部分，程序运行失败仅被认为是几个预期的结果之一。
+
+对于那些将运行失败看作是预期结果的函数，它们会返回一个额外的返回值，通常是最后一个，来传递错误信息。如果导致失败的原因只有一个，额外的返回值可以是一个布尔值，通常被命名为ok。比如，cache.Lookup失败的唯一原因是key不存在，那么代码可以按照下面的方式组织：
+
+```Go
+value, ok := cache.Lookup(key)
+if !ok {
+    // ...cache[key] does not exist…
+}
+```
+
+Go这样设计的原因是由于对于某个应该在控制流程中处理的错误而言，将这个错误以异常的形式抛出会混乱对错误的描述，这通常会导致一些糟糕的后果。当某个程序错误被当作异常处理后，这个错误会将堆栈跟踪信息返回给终端用户，这些信息复杂且无用，无法帮助定位错误。
+
+正因此，Go使用控制流机制（如if和return）处理错误，这使得编码人员能更多的关注错误处理。
+
+1） 错误处理策略
+
+第一种：传播错误。编写错误信息时，我们要确保错误信息对问题细节的描述是详尽的。尤其是要注意错误信息表达的一致性，即相同的函数或同包内的同一组函数返回的错误在构成和处理方式上是相似的。
+
+
 
 ## GO语言基础学习
 
