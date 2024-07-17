@@ -425,7 +425,7 @@ new Vue({
         name:'hello world',
 		styleobj:{
 			fontSize:40px',
-			color;'red'
+			color：'red'
 		}
     }
  })
@@ -631,7 +631,7 @@ V-show：条件渲染 (动态控制节点是否展示)
 **v-html指令:**
 1.作用:向指定节点中渲染包含htm1结构的内容。
 2.与插值语法的区别:
-(1).v-htm1会替换掉节点中所有的内容，{{xx}}则不会
+(1).v-html会替换掉节点中所有的内容，{{xx}}则不会
 
 (2).v-html可以识别html结构。
 
@@ -822,7 +822,7 @@ const school = Vue.extend(options) 可简写为: const school = options
 (2) new Vue(options)配置中:
 data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是[Vue实例对象]
 
-5.VueComponent的实例对象，以后简称vc(也可称之为:组件实例对象)Vue的实例对象，以后简称vm。
+5.VueComponent的实例对象，以后简称vc(也可称之为:组件实例对象)   Vue的实例对象，以后简称vm。
 
 #### 重要的内置关系
 
@@ -1081,6 +1081,8 @@ localstorage.clear()
 简单来说就是：给组件使用的事件
 
 #### 绑定事件
+
+App.vue
 
 ```vue
 <!-- 通过父组件给子组件传递函数类型的props实现:子给父传递数据 -->
@@ -1385,7 +1387,7 @@ vue插件库vue1.x 使用广泛，官方已不维护
 </template>
 ```
 
-​		**作用域插槽**
+​	**作用域插槽**
 
 数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定(games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定)
 
@@ -1431,18 +1433,24 @@ vue插件库vue1.x 使用广泛，官方已不维护
 
 ## Vuex
 
-概念:专门在Vue中实现集中式状态(数据)管理的一个Vue 插件，对vue应用中多个组件的共享状态进行集中式的管理(读/写)，也是一种组
-
-件间通信的方式，且适用于任意组件间通信。
+概念:专门在Vue中实现集中式状态(数据)管理的一个Vue 插件，对vue应用中多个组件的共享状态进行集中式的管理(读/写)，也是一种组件间通信的方式，且适用于任意组件间通信。
 
 **什么时候使用Vuex?**
 
-1、多个组件依赖于同一状态
-2、来自不同组件的行为需要变更同一状态
+1、多个组件依赖于同一状态（数据）
+2、来自不同组件的行为需要变更同一状态（数据）
 
 原理图：
 
+只存在dispatch和commit 两个API可调用，mutate和render 是自动调用的。
+
 ![vuex](figure/vuex.png)
+
+当不需要与其他服务器交互或不需要写一些业务交互逻辑，允许VC组件跳过Actions直接调用commit API
+
+开发者工具如浏览器内的Vue3插件 只关注mutations
+
+![image-20240716114507126](figure/image-20240716114507126.png)
 
 ### vuex使用
 
@@ -1455,11 +1463,17 @@ vue.use(vuex)
 
 //准备actions-用于响应组件中的动作
 const actions = {
-
+	//这里面的函数一般小写与Mutations区分
+	jia(context,value){
+		//context包含commit等
+		context.commit('JIA',value)
+	}
 }
 //准备mutations-用于操作数据 (state)
 const mutations = {
-
+	JIA(state,value){
+		state.sum += value
+	}
 }
 //准备state)-用于存储数据
 const state = {
@@ -2291,7 +2305,7 @@ watchEffect(()=>{
 ### 生命周期
 
 1、Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名
-beforeDestroy改名为beforeUnmountO
+beforeDestroy改名为beforeUnmount
 destroyed改名为 unmounted
 
 2、Vue3.0也提供了 Composition API形式的生命周期钩子，与Vue2.x中钩子对应关系如下：
@@ -2303,7 +2317,7 @@ beforeMount ===> onBeforeMount
 mounted ===> onMounted
 
 beforeUpdate ===> onBeforeUpdate
-Updated ===> updatedon
+Updated ===> onupdated
 
 beforeUnmount==>onBeforeUnmount
 
