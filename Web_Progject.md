@@ -172,3 +172,50 @@ console.log(cookies.get('token'))
 - 实现回车登录
 
 在login.vue中加入监听回车事件，但要在组件挂载前和卸载后执行。
+
+12、退出功能实现
+
+引入 elementplus中的 ELmessageBox构造退出登录提示消息框函数
+
+再在Index.vue 首页中 编辑 退出登录逻辑，其中退出需要调用后端API。
+
+因为这是多用户都能用到的共享行为，可在vuex注册 `loginout ` action，处理清空cookie和用户状态(数据)
+
+再跳转至首页及提示退出成功。
+
+13、页面loading进度条
+
+引入 nprogress模块，调用其中NProgress中start与done实现进度条开启与关闭
+
+需要再路由前置和后置守卫中分别开启和关闭进度条。
+
+如需改变进度条样式，可在app.vue中修改进度条css样式。
+
+14、动态页面标题实现
+
+在路由文件夹，route配置中加入meta 的title配置
+
+再进入permission路由前置控制函数中，读取to页面的标题给html标题头。
+
+###  后台全局layout布局
+
+1、后台主布局实现
+
+建立layout文件夹，admin.vue 中利用elementplus中的container顶栏、侧栏、标签栏布局，分别建立三个布局的vue文件
+
+再将admin.vue加入router路由文件夹下作为后台首页，之后以此布局的页面路由都可放在其子路由里。
+
+2、头部文件样式开发
+
+通过windiCSS中flex布局样式，实现头部栏刷新、全屏、头像、用户选项样式
+
+3、刷新和全屏功能实现
+
+给刷新按钮绑定 刷新事件，全屏功能引入 vueuse的usefullscreen功能，实现全屏功能
+
+顺便将用户按钮中退出登录的功能从之前的首页移动到此页中。
+
+ 4、头部修改密码功能开发
+
+elementplus抽屉组件实现修改密码弹出
+
